@@ -1,77 +1,205 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>تصريح جاهز للتنزيل</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تصريح جاهز للتنزيل</title>
 
-<style>
-body{
-margin:0;
-font-family:Arial;
-background: radial-gradient(circle at center,#0f2a3f,#050a12);
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-color:white;
-}
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: system-ui,-apple-system,"Segoe UI",Arial;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px 16px;
 
-.card{
-background:rgba(0,0,0,0.6);
-padding:30px;
-border-radius:20px;
-width:90%;
-max-width:600px;
-text-align:center;
-box-shadow:0 0 40px rgba(0,0,0,0.5);
-}
+      /* خلفية مثل الصورة: أزرق غامق مع هالة */
+      background:
+        radial-gradient(1200px 650px at 42% 34%, #0a2b3e 0%, #071626 35%, #050b14 70%, #04070c 100%);
+    }
 
-h1{
-margin-bottom:10px;
-}
+    .panel{
+      width:min(1050px, 100%);
+      padding: 28px;
+    }
 
-.box{
-background:rgba(255,255,255,0.1);
-padding:12px;
-border-radius:10px;
-margin:8px 0;
-}
+    .card{
+      position:relative;
+      border-radius:26px;
+      padding: 34px 34px 28px;
+      overflow:hidden;
 
-.button{
-display:block;
-margin-top:20px;
-padding:15px;
-background:linear-gradient(90deg,#00d4ff,#00ffa6);
-color:black;
-font-weight:bold;
-border-radius:12px;
-text-decoration:none;
-}
-</style>
+      /* كارد زجاجي */
+      background: rgba(8,16,24,.62);
+      border: 1px solid rgba(255,255,255,.06);
+      box-shadow: 0 28px 90px rgba(0,0,0,.65);
+      backdrop-filter: blur(16px);
+    }
+
+    /* لمعان خفيف داخل الكارد (مثل الهالة اللي بالصورة) */
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-120px -80px auto -80px;
+      height:320px;
+      background: radial-gradient(circle at 35% 40%, rgba(25,165,255,.22), rgba(0,0,0,0) 60%);
+      pointer-events:none;
+    }
+
+    .logo{
+      position:absolute;
+      top:18px;
+      right:18px;
+      width:66px;
+      height:66px;
+      border-radius:18px;
+      overflow:hidden;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .logo img{width:100%;height:100%;object-fit:cover}
+
+    h1{
+      margin: 8px 0 8px;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing:.2px;
+      text-align:center;
+    }
+
+    .subtitle{
+      margin:0 0 22px;
+      text-align:center;
+      font-size:14px;
+      line-height:1.7;
+      color: rgba(255,255,255,.68);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:14px;
+      margin: 18px auto 22px;
+    }
+
+    .box{
+      border-radius:16px;
+      padding: 14px 16px;
+      min-height:74px;
+
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .label{
+      font-size:13px;
+      color: rgba(255,255,255,.62);
+      margin-bottom:6px;
+    }
+    .value{
+      font-size:18px;
+      font-weight: 900;
+      color:#fff;
+    }
+
+    /* بوكس تاريخ الانتهاء يكون صف ثاني يمين مثل الصورة */
+    .expire{
+      grid-column: 3 / 4;
+    }
+
+    .btn{
+      display:block;
+      width:100%;
+      text-align:center;
+      padding: 15px 16px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight: 900;
+      color:#021019;
+
+      /* زر تدرج مثل الصورة */
+      background: linear-gradient(90deg, #16d5b6 0%, #1aa6ff 100%);
+      box-shadow: 0 10px 30px rgba(26,166,255,.18);
+    }
+
+    .foot{
+      text-align:center;
+      margin-top:10px;
+      font-size:12px;
+      color: rgba(255,255,255,.50);
+    }
+
+    @media (max-width: 900px){
+      h1{font-size:30px}
+      .grid{grid-template-columns:1fr}
+      .expire{grid-column:auto}
+      .card{padding:28px 18px 22px}
+    }
+  </style>
 </head>
 
 <body>
+  <div class="panel">
+    <div class="card">
+      <!-- ارفع اللوغو باسم logo.png داخل repo -->
+      <div class="logo">
+        <img src="logo.png.jpeg" alt="logo">
+      </div>
 
-<div class="card">
-<h1>تصريح جاهز للتنزيل</h1>
+      <h1>تصريح جاهز للتنزيل</h1>
+      <div class="subtitle">
+        استخدم الزر أدناه لتنزيل نسخة PDF الرسمية للتصريح. يمكنك مشاركتها مع الجهات المعنية للتحقق.
+      </div>
 
-<div class="box">رقم التصريح: <span id="permit">---</span></div>
-<div class="box">اسم الشركة: شركتك</div>
-<div class="box">تاريخ الإصدار: 2026-02-15</div>
-<div class="box">تاريخ الانتهاء: 2026-03-08</div>
+      <div class="grid">
+        <div class="box">
+          <div class="label">تاريخ الإصدار</div>
+          <div class="value" id="issueDate">—</div>
+        </div>
 
-<a id="downloadBtn" class="button">تحميل التصريح PDF</a>
+        <div class="box">
+          <div class="label">الشركة</div>
+          <div class="value" id="company">—</div>
+        </div>
 
-</div>
+        <div class="box">
+          <div class="label">رقم التصريح</div>
+          <div class="value" id="permitNo">—</div>
+        </div>
 
-<script>
-const params = new URLSearchParams(window.location.search);
-const file = params.get("file") || "2883.pdf";
+        <div class="box expire">
+          <div class="label">تاريخ الانتهاء</div>
+          <div class="value" id="expireDate">—</div>
+        </div>
+      </div>
 
-document.getElementById("permit").innerText = file.replace(".pdf","");
-document.getElementById("downloadBtn").href = "pdf/" + file;
-</script>
+      <a class="btn" id="downloadBtn" href="#" download>اضغط لتنزيل التصريح (PDF)</a>
+      <div class="foot">سيبدأ التنزيل مباشرة. إذا لم يبدأ اضغط الزر مرة أخرى.</div>
+    </div>
+  </div>
 
+  <script>
+    // مثال:
+    // ?file=pdf.pdf&permit=2883&company=ميثاق%20التركية&issue=2026-02-15&expire=2026-03-08
+    const p = new URLSearchParams(location.search);
+
+    const file   = p.get("file")   || "pdf.pdf";     // موجود داخل مجلد pdf/
+    const permit = p.get("permit") || file.replace(/\.pdf$/i,"");
+    const company= p.get("company")|| "اسم شركتك";
+    const issue  = p.get("issue")  || "2026-02-15";
+    const expire = p.get("expire") || "2026-03-08";
+
+    document.getElementById("permitNo").textContent  = permit;
+    document.getElementById("company").textContent   = company;
+    document.getElementById("issueDate").textContent = issue;
+    document.getElementById("expireDate").textContent= expire;
+
+    document.getElementById("downloadBtn").href = "pdf/" + file;
+  </script>
 </body>
 </html>
