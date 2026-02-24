@@ -134,12 +134,12 @@
       color: rgba(255,255,255,.50);
     }
 
-    @media (max-width: 900px){
-      h1{font-size:30px}
-      .grid{grid-template-columns:1fr}
-      .expire{grid-column:auto}
-      .card{padding:28px 18px 22px}
-    }
+   @media (max-width: 900px){
+  h1{font-size:30px;margin-top:60px;}
+  .grid{grid-template-columns:1fr}
+  .expire{grid-column:auto}
+  .card{padding:70px 18px 22px}
+}
   </style>
 </head>
 
@@ -183,23 +183,19 @@
     </div>
   </div>
 
-  <script>
-    // مثال:
-    // ?file=pdf.pdf&permit=2883&company=ميثاق%20التركية&issue=2026-02-15&expire=2026-03-08
-    const p = new URLSearchParams(location.search);
+<script>
+  const file   = "pdf.pdf";          // اسم ملف الـ PDF داخل مجلد pdf
+  const permit = "2883";             // رقم التصريح
+  const company= "ميتاش التركية";    // اسم الشركة
+  const issue  = "2026-02-15";        // تاريخ الإصدار
+  const expire = "2026-03-08";        // تاريخ الانتهاء
 
-    const file   = p.get("file")   || "pdf.pdf";     // موجود داخل مجلد pdf/
-    const permit = p.get("permit") || file.replace(/\.pdf$/i,"");
-    const company= p.get("company")|| "اسم شركتك";
-    const issue  = p.get("issue")  || "2026-02-15";
-    const expire = p.get("expire") || "2026-03-08";
+  document.getElementById("permitNo").textContent  = permit;
+  document.getElementById("company").textContent   = company;
+  document.getElementById("issueDate").textContent = issue;
+  document.getElementById("expireDate").textContent= expire;
 
-    document.getElementById("permitNo").textContent  = permit;
-    document.getElementById("company").textContent   = company;
-    document.getElementById("issueDate").textContent = issue;
-    document.getElementById("expireDate").textContent= expire;
-
-    document.getElementById("downloadBtn").href = "pdf/" + file;
-  </script>
+  document.getElementById("downloadBtn").href = "pdf/" + file;
+</script>
 </body>
 </html>
