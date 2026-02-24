@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تصريح جاهز للتنزيل</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background: radial-gradient(circle at center,#0f2a3f,#050a12);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+}
+
+.card{
+background:rgba(0,0,0,0.6);
+padding:30px;
+border-radius:20px;
+width:90%;
+max-width:600px;
+text-align:center;
+box-shadow:0 0 40px rgba(0,0,0,0.5);
+}
+
+h1{
+margin-bottom:10px;
+}
+
+.box{
+background:rgba(255,255,255,0.1);
+padding:12px;
+border-radius:10px;
+margin:8px 0;
+}
+
+.button{
+display:block;
+margin-top:20px;
+padding:15px;
+background:linear-gradient(90deg,#00d4ff,#00ffa6);
+color:black;
+font-weight:bold;
+border-radius:12px;
+text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>تصريح جاهز للتنزيل</h1>
+
+<div class="box">رقم التصريح: <span id="permit">---</span></div>
+<div class="box">اسم الشركة: شركتك</div>
+<div class="box">تاريخ الإصدار: 2026-02-15</div>
+<div class="box">تاريخ الانتهاء: 2026-03-08</div>
+
+<a id="downloadBtn" class="button">تحميل التصريح PDF</a>
+
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const file = params.get("file") || "2883.pdf";
+
+document.getElementById("permit").innerText = file.replace(".pdf","");
+document.getElementById("downloadBtn").href = "pdf/" + file;
+</script>
+
+</body>
+</html>
